@@ -1,0 +1,260 @@
+@import 'variables';
+
+body  {
+  margin: 0;
+  padding: 0;
+  background-color: $body-background;
+
+  .main-container {
+    background-color: $body-background;
+    padding: 0.1px;
+
+    .active-tab {
+      border-bottom: 2px solid $header-background;
+      color: $header-background;
+    }
+
+    .header {
+      background-color: $header-background;
+      padding: 3px;
+
+      .title  {
+        color: $white-col;
+        display: inline-block;
+        font-size: 25px;
+        font-weight: 800;
+        margin-left: 30px;
+        cursor: pointer;
+      }
+
+      .logout-menu  {
+        display: flex;
+        float: right;
+        margin: 0 40px;
+        text-align: center;
+
+        .user-name  {
+          color: $white-col;
+          float: right;
+          font-size: 14px;
+          padding: 7px 0 0 3px ;
+        }
+
+        .header-profile-image {
+          border-radius: 30px;
+          height: auto;
+          padding: 4px;
+          width: 40px;
+        }
+
+        .logout-arrow {
+          color: $white-col;
+          margin: 2px;
+          vertical-align: middle;
+        }
+
+        .dropdown-menu {
+          min-width: 67px;
+        }
+      }
+    }
+
+    .login-title  {
+      background-color: $header-background;
+      color: $white-col;
+      font-size: 20px;
+      padding: 7px;
+      text-align: center;
+    }
+
+    .hero-container {
+      margin: 35px 13px 0 14px;
+      .hero-img {
+        height: auto;
+        width: 100%;
+      }
+    }
+
+    .row  {
+      margin: 0;
+
+      .display {
+        display: inline-block;
+      }
+
+      .side-bar {
+        display: inline-block;
+        height: auto;
+        overflow: visible;
+        padding-left: 14px;
+        top: -360px;
+        z-index: 900;
+      }
+
+      .content-body {
+        display: inline-block;
+        float: right;
+        margin: 0 10px 10px 5px;
+        padding: 0;
+        width: 73%;
+
+        .header-menu  {
+          background-color: $white-col;
+          padding: 1px;
+        }
+
+        .selected-content {
+          border-bottom: 2px solid $header-background;
+          color: $header-background;
+        }
+
+        .menu-content {
+          background-color: $white-col;
+          padding: 20px;
+          text-align: center;
+        }
+      }
+    }
+
+    .invalid-data {
+      margin: 0;
+      text-align: center;
+    }
+
+    .login-form {
+      background-color: $white-col;
+      margin: 121px 430px 383px 430px;
+
+      .form-container {
+        padding: 20px 20px 10px 20px;
+
+        .submit-btn {
+          background-color: $header-background;
+          border: none;
+          color: $white-col;
+          padding: 7px;
+
+          &:focus {
+            border: none;
+          }
+        }
+      }
+    }
+  }
+}
+
+//media query starts from here
+@media screen and (min-device-width: $mobile-min) and (max-device-width: $mobile-max) {
+  body  {
+
+    .main-container {
+
+      .header {
+
+        .title  {
+          margin-left: 2px;
+        }
+
+        .logout-menu  {
+          margin: 0;
+        }
+      }
+
+      .hero-container {
+        margin: 40px 10px 0 10px;
+      }
+
+      .row  {
+        margin: 0;
+
+        .side-bar {
+          display: none;
+          padding: 7px;
+          top: -128px;
+        }
+
+        .content-body {
+          margin: 0 10px 10px 10px;
+          width: auto;
+
+          .header-menu  {
+            display: block;
+            padding: 1px;
+          }
+
+          .menu-content {
+            padding: 15px 19px;
+            width: 24%;
+          }
+        }
+      }
+
+      .login-form {
+        background-color: $white-col;
+        margin: 80px 5px 200px 5px;
+
+        .login-title  {
+          font-size: 20px;
+          text-align: center;
+        }
+
+        .form-container {
+          padding: 20px;
+        }
+      }
+    }
+  }
+}
+
+@media screen and (min-device-width: $tablet-min) and (max-device-width: $tablet-max) {
+  body  {
+
+    .main-container {
+
+      .row  {
+
+        .side-bar {
+          padding: 7px;
+          top: -230px;
+          width: 30%;
+        }
+
+        .content-body {
+          width: 68%;
+
+          .menu-content {
+            padding: 10px 39px;
+            text-align: center;
+            width: 24%;
+          }
+        }
+      }
+
+      .login-form {
+        margin: 100px 150px 200px 150px;
+      }
+    }
+  }
+}
+
+@media only screen and (min-device-width: $pad-min) and
+(max-device-width: $pad-max)  {
+
+  body  {
+
+    .main-container {
+
+      .row  {
+        margin: 0;
+
+        .side-bar {
+          top: -300px;
+        }
+      }
+
+      .login-form {
+        margin: 100px 250px 200px 250px;
+      }
+    }
+  }
+}

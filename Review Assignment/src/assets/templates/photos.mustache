@@ -1,0 +1,26 @@
+<div class="photo-container">
+  <div class="gallery">
+    {{#posts}}
+      <div id="i1" class="photo">
+        <a href="#" data-toggle='modal' data-target='#display-image'><img class="modal-link" src="{{image}}"/></a>
+      </div>
+    {{/posts}}
+  </div>
+</div>
+
+<!--Modal to add new post in timeline-->
+<div id="display-image" class="modal fade" role="dialog">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal">&times;
+        </button>
+      </div>
+      <div class="modal-body">
+        <div class="show-image">
+          <img class="modal-image" src=""/>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

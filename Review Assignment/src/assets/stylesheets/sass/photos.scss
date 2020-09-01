@@ -1,0 +1,64 @@
+@import 'variables';
+
+.photo-container  {
+  background-color: $body-background;
+  margin-top: 60px;
+
+  .gallery {
+    background-color: $white-col;
+    margin-top: 93px;
+    padding: 10px;
+
+    .photo  {
+      background-color: $white-col;
+      display: inline-block;
+      margin-top: 5px;
+      padding: 10px;
+      width: 24%;
+
+      img {
+        height: auto;
+        width: 100%;
+      }
+    }
+  }
+}
+
+.show-image {
+  height: auto;
+  max-width: 600px;
+
+  img {
+    height: auto;
+    width: 100%;
+  }
+}
+
+//media query starts from here
+@media screen and (min-device-width: $mobile-min) and (max-device-width: $mobile-max) {
+  .photo-container  {
+    background-color: $body-background;
+    margin-top: 0;
+
+    .gallery {
+      margin-top: 40px;
+      padding: 3px;
+
+      .photo  {
+        width: 100%;
+
+      }
+    }
+  }
+}
+
+@media screen and (min-device-width: $tablet-min) and (max-device-width: $tablet-max) {
+  .photo-container  {
+    background-color: $body-background;
+    margin-top: 0;
+  }
+}
+
+@media only screen and (min-device-width: $pad-min) and
+(max-device-width: $pad-max)  {
+}

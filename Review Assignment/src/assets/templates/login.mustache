@@ -1,0 +1,23 @@
+<div class="header">
+  <div class="title">Able</div>
+</div>
+<div id="login-form" class="login-form remove">
+  <div class="alert alert-danger alert-dismissible invalid-data hidden">
+    Please enter <strong>correct</strong> ID and password!
+  </div>
+  <div class="login-title">Please Login!</div>
+  <div class="form-container">
+    <form id="form-login" class="form-group">
+      <div class="form-group">
+        <label for="email">Enter your email address:</label>
+        <input id="email" name="Email" type="email" class="form-control" placeholder="Enter email" required/>
+        <span id="email-error"></span>
+      </div>
+      <div class="form-group">
+        <label for="psw">Enter your password:</label>
+        <input id="passwd"  minlength="6" name="Passwd" type="password" class="form-control" placeholder="Password" required/>
+      </div>
+      <button id="login" type="submit" class="btn submit-btn">Login</button>
+    </form>
+  </div>
+</div>
