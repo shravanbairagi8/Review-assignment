@@ -1,0 +1,102 @@
+<div class="about-container">
+  <div class="basic-info">
+    <div class="basic-info-header">
+      <div class="basic">BASIC INFORMATION</div>
+      <div id="basic-info-edit" class="edit btn btn-md btn-primary"><span class="fas fa-edit"></span></div>
+    </div>
+    <div class="basic-info-content">
+      <div id="personal-info" class="info-container">
+        <div class="info-title col-md-2">Full Name</div>
+        <div class="info-description col-md-9 info">
+          <div class="info-value name"></div>
+        </div>
+        <div class="info-title col-md-2">Gender</div>
+        <div class="info-description col-md-9 info">
+          <div class="info-value gender"></div>
+          </div>
+        <div class="info-title col-md-2">Birth Date</div>
+        <div class="info-description col-md-9 info">
+          <div class="info-value birth-date"></div>
+        </div>
+        <div class="info-title col-md-2">Marital Status</div>
+        <div class="info-description col-md-9 info">
+          <div class="info-value merital-status"></div>
+        </div>
+        <div class="info-title col-md-2">Location</div>
+        <div class="info-description col-md-9 info">
+          <div class="info-value location"></div>
+        </div>
+      </div>
+      <!--info form code starts from here-->
+      <div id="personal-info-form" class="info-container hidden">
+        <form id="info-form">
+          <div class="info-title col-md-2">Full Name</div>
+          <div class="info-description col-md-9 info">
+            <input type="text" class="form-control name-input" required/>
+          </div>
+          <div class="info-title col-md-2">Gender</div>
+          <div class="info-description col-md-9 info">
+            <input type="text" class="form-control gender-input" required/>
+            </div>
+          <div class="info-title col-md-2">Birth Date</div>
+          <div class="info-description col-md-9 info">
+            <input type="text" class="form-control birth-date-input" required/>
+          </div>
+          <div class="info-title col-md-2">Marital Status</div>
+          <div class="info-description col-md-9 info">
+            <input type="text" class="form-control merital-status-input" required/>
+          </div>
+          <div class="info-title col-md-2">Location</div>
+          <div class="info-description col-md-9 info">
+            <input type="text" class="form-control current-location-input" required/>
+          </div>
+          <div class="apply-button-container">
+            <button type="submit" method="post" id="submit-basic-info" class="btn btn-primary btn-sm apply-changes">Apply Changes</button>
+          </div>
+        </form>
+      </div>
+    </div>
+  </div>
+  <div class="work">
+    <div class="basic-info-header">
+      <div class="work-inline">Work</div>
+      <div id="work-edit" class="edit btn btn-md btn-primary"><span class="fas fa-edit"></span></div>
+    </div>
+    <div class="basic-info-content">
+      <div id="professional-info" class="info-container">
+        <div  class="info-title col-md-2">Occupation</div>
+        <div class="info-description col-md-9">
+          <div class="work-value occupation"></div>
+        </div>
+        <div class="info-title col-md-2">Skills</div>
+        <div class="info-description col-md-9">
+          <div class="work-value skills"></div>
+        </div>
+        <div class="info-title col-md-2">Jobs</div>
+        <div class="info-description col-md-9">
+          <div class="work-value job"></div>
+        </div>
+      </div>
+
+      <div id="professional-form" class="info-container hidden">
+        <form id="work-form">
+          <div  class="info-title col-md-2">Occupation</div>
+          <div class="info-description col-md-9">
+            <input type="text" class="form-control occupation-input" required/>
+          </div>
+          <div class="info-title col-md-2">Skills</div>
+          <div class="info-description col-md-9">
+            <input type="text" class="form-control skills-input" required/>
+          </div>
+          <div class="info-title col-md-2">Jobs</div>
+          <div class="info-description col-md-9">
+            <input type="text" class="form-control job-input" required>
+          </div>
+          <div class="apply-button-container">
+            <button type="submit" id="submit-work" class="btn btn-primary btn-sm apply-changes">Apply Changes</button>
+          </div>
+        </form>
+      </div>
+    </div>
+  </div>
+</div>

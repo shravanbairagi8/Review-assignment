@@ -1,0 +1,112 @@
+.friend-container {
+  background-color: #e6e6e6;
+  margin-top: 80px;
+  padding: 1px; }
+  .friend-container .friend-tile {
+    background-color: #ffffff;
+    display: inline-block;
+    margin: 10px 16px 10px 0;
+    padding: 5px;
+    width: 48%; }
+    .friend-container .friend-tile .friends-image {
+      height: 90px;
+      width: auto; }
+    .friend-container .friend-tile .friends-info {
+      padding: 2px; }
+      .friend-container .friend-tile .friends-info .friends-name {
+        color: #000000;
+        font-size: 16px;
+        font-weight: 400;
+        padding: 3px; }
+      .friend-container .friend-tile .friends-info .friends-job {
+        font-size: 14px;
+        font-weight: 500;
+        opacity: 0.6;
+        padding: 3px; }
+      .friend-container .friend-tile .friends-info .follow {
+        padding: 5px 2px; }
+        .friend-container .friend-tile .friends-info .follow .follow-unfollow-btn {
+          background-color: #4d94ff;
+          border: none;
+          border-radius: 0px;
+          font-size: 11px;
+          padding: 7px 10px; }
+
+@media screen and (min-device-width: 320px) and (max-device-width: 480px) {
+  .friend-container {
+    background-color: #e6e6e6;
+    margin-top: 0px;
+    padding: 1px; }
+    .friend-container .friend-tile {
+      background-color: #ffffff;
+      display: inline-block;
+      margin: 10px 0;
+      text-align: center;
+      padding: 5px;
+      width: 100%; }
+      .friend-container .friend-tile .friends-image {
+        display: inline-block;
+        height: 150px;
+        width: auto; }
+      .friend-container .friend-tile .friends-info {
+        display: inline-block;
+        padding: 2px; }
+        .friend-container .friend-tile .friends-info .friends-name {
+          color: #000000;
+          font-size: 16px;
+          font-weight: 800;
+          padding: 3px; }
+        .friend-container .friend-tile .friends-info .friends-job {
+          font-size: 14px;
+          font-weight: 500;
+          opacity: 0.6;
+          padding: 3px; }
+        .friend-container .friend-tile .friends-info .follow {
+          padding: 10px; }
+          .friend-container .friend-tile .friends-info .follow .follow-btn {
+            color: #cccccc;
+            display: inline-block;
+            padding: 5px; }
+    .friend-container .friend-tile-left {
+      background-color: #ffffff;
+      margin: 10px 10px 10px 0;
+      padding: 5px; } }
+@media screen and (min-device-width: 768px) and (max-device-width: 1023px) {
+  .friend-container {
+    margin-top: 0; }
+    .friend-container .friend-tile-right {
+      background-color: #ffffff;
+      display: inline-block;
+      margin: 10px;
+      text-align: center;
+      padding: 5px;
+      width: 45%; }
+      .friend-container .friend-tile-right .friends-image {
+        display: inline-block;
+        height: 90px;
+        width: auto; }
+      .friend-container .friend-tile-right .friends-info {
+        display: inline-block;
+        padding: 2px; }
+        .friend-container .friend-tile-right .friends-info .friends-name {
+          color: #000000;
+          font-size: 16px;
+          font-weight: 800;
+          padding: 3px; }
+        .friend-container .friend-tile-right .friends-info .friends-job {
+          font-size: 14px;
+          font-weight: 500;
+          opacity: 0.6;
+          padding: 3px; }
+        .friend-container .friend-tile-right .friends-info .follow {
+          padding: 10px; }
+          .friend-container .friend-tile-right .friends-info .follow .follow-btn {
+            color: #cccccc;
+            display: inline-block;
+            padding: 5px; } }
+@media only screen and (min-device-width: 1024px) and (max-device-width: 1279px) {
+  .friend-container .friend-tile-right .friends-info {
+    padding: 2px 2px 2px 10px;
+    width: 66%; } }
+
+/*# sourceMappingURL=friends.css.map */
