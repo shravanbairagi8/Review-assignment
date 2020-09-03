@@ -1,31 +1,26 @@
 window.about = function() {
   var aboutPage = {};
-  var type = 'GET';
   var hideElement = 'hidden';
   var click = 'click';
 
-  function getData(key) {
-    var value = localStorage.getItem(key);
-    return value;
-  }
-
-  function storeData(fullName, gender, birthDate, mStatus, location, occupation, skills, job) {
-    var newData =  {
-      'name': fullName,
-      'gender': gender,
-      'birthDate': birthDate,
-      'status': mStatus,
-      'location': location,
-      'occupation': occupation,
-      'skill': skills,
-      'job': job
+  // setting default user info
+  function storeData(userData) {
+    let newData =  {
+      'name': userData.name,
+      'gender': userData.gender,
+      'birthDate': userData.birthDate,
+      'status': userData.status,
+      'location': userData.location,
+      'occupation': userData.occupation,
+      'skills': userData.skills,
+      'job': userData.job
     };
 
-    window.helper().setLocalStorageData('userData', newData);
+    helper.setLocalStorageData('userData', newData);
   }
 
   function personData() {
-    const userData = window.helper().getLocalStorageData('userData');
+    const userData = helper.getLocalStorageData('userData');
     return userData;
   }
 
@@ -35,13 +30,13 @@ window.about = function() {
       let dataUrl = '../assets/data/about.json';
 
       $.get({url: dataUrl, type: type, success: function(userDetails)  {
-        storeData(userDetails.name, userDetails.gender, userDetails.birthDate, userDetails.status, userDetails.location, userDetails.occupation, userDetails.skills, userDetails.job);
+        storeData(userDetails);
         updatePersonalInfo();
       }});
     }
   }
 
-  //Default values of about info and work form deatails
+  // Default values of about info and work form deatails
   function personalInfo() {
     let userInfo = personData();
     let userName = userInfo.name;
@@ -69,7 +64,7 @@ window.about = function() {
   function professionalInfo() {
     let userInfo = personData();
     let occupation = userInfo.occupation;
-    let skill = userInfo.skill;
+    let skill = userInfo.skills;
     let job = userInfo.job;
 
     $('.occupation-input').val(occupation);
@@ -82,20 +77,31 @@ window.about = function() {
     $('.profile-job').text(occupation);
   }
 
+  // editing of user info starts from here
   function submitEventData() {
-    var fullName = $('.name-input').val();
-    var gender = $('.gender-input').val();
-    var birthDate = $('.birth-date-input').val();
-    var mStatus = $('.merital-status-input').val();
-    var location = $('.current-location-input').val();
-    var occupation = $('.occupation-input').val();
-    var skills = $('.skills-input').val();
-    var job = $('.job-input').val();
+    let fullName = $('.name-input').val();
+    let gender = $('.gender-input').val();
+    let birthDate = $('.birth-date-input').val();
+    let mStatus = $('.merital-status-input').val();
+    let location = $('.current-location-input').val();
+    let occupation = $('.occupation-input').val();
+    let skills = $('.skills-input').val();
+    let job = $('.job-input').val();
 
-    storeData(fullName, gender, birthDate, mStatus, location, occupation, skills, job);
+    let updatedData =  {
+      'name': fullName,
+      'gender': gender,
+      'birthDate': birthDate,
+      'status': mStatus,
+      'location': location,
+      'occupation': occupation,
+      'skills': skills,
+      'job': job
+    };
+    storeData(updatedData);
   }
 
-  //display edit form data into about section
+  // display edit form data into about section
   function editButtonClickEvents() {
     $('#basic-info-edit').on(click, function() {
       $('#personal-info').addClass(hideElement);
@@ -142,12 +148,13 @@ window.about = function() {
     }
   }
 
+  // calling template through ajax
   function displayAbout() {
     let templateUrl = '../assets/templates/about.mustache';
 
     $.get({url: templateUrl, type: type, success: function(aboutTemplate) {
-      window.helper().renderContent(aboutTemplate, 'about');
-      window.helper().updateName('profile-name');
+      helper.renderContent(aboutTemplate, 'about');
+      helper.updateName('profile-name');
       defaultUserInfo();
       editButtonClickEvents();
       editUserInfo();

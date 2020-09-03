@@ -1,19 +1,18 @@
 window.timeline = function() {
   var timeLine = {};
-  var type = 'GET';
   var storageKey = 'uploads';
   var math = Math;
   var max = 1001;
 
   // To display time on posts
   function displayTime(element) {
-    var pTime = $('#' + element).attr('data-id');
-    var minute  = pTime.slice(19,21);
-    var dt = new Date();
-    var currTime = dt.getMinutes();
-    var postedTime = 0;
-    var maxSeconds = 60;
-    var $element = $('#' + element);
+    let postTime = $('#' + element).attr('data-id');
+    let minute  = postTime.slice(19,21);
+    let dt = new Date();
+    let currTime = dt.getMinutes();
+    let postedTime = 0;
+    let maxSeconds = 60;
+    let $element = $('#' + element);
     if (currTime > minute) {
       postedTime = currTime - parseInt(minute);
     } else if (currTime < minute) {
@@ -33,33 +32,33 @@ window.timeline = function() {
     }
   }
 
-  //code to add new post on timeLine
+  // code to add new post on timeLine
   function showPost() {
-    var photos = window.helper().getLocalStorageData(storageKey);
-    if (photos != null) {
+    let photos = helper.getLocalStorageData(storageKey);
+    if (photos) {
       let templateUrl = '../assets/templates/posts.mustache';
 
       $.get({url: templateUrl, type: type, success: function(postTemplate) {
 
-        var postTemp = Mustache.render(postTemplate, photos);
+        let postTemp = Mustache.render(postTemplate, photos);
         $('.newpost').remove();
         $('.post-outer-container').prepend(postTemp);
         $('.display-year').removeClass('hidden');
-        window.helper().updateName('user-name');
+        helper.updateName('user-name');
 
-        for (var j in photos.posts) {
-          var timeId = photos.posts[j].i;
+        for (let j in photos.posts) {
+          let timeId = photos.posts[j].i;
           displayTime(timeId);
         }
       }});
 
-      var activity = photos.posts.length + 1;
+      let activity = photos.posts.length + 1;
       $('.activity-number').text(activity);
     }
   }
 
   function addPost() {
-    var activityCount = parseInt($('.activity-number').text());
+    let activityCount = parseInt($('.activity-number').text());
     $("#post-form").validate({
       messages: {
         url: {
@@ -71,11 +70,11 @@ window.timeline = function() {
         $('#submit-post').on('click', function(event) {
           event.preventDefault();
           activityCount += 1;
-          var postData = JSON.parse(localStorage.getItem(storageKey));
-          var random = math.floor(math.random() * max);
-          var postImage = $('#photo').val();
-          var comment = $('#comments').val();
-          var date = new Date();
+          let postData = JSON.parse(localStorage.getItem(storageKey));
+          let random = math.floor(math.random() * max);
+          let postImage = $('#photo').val();
+          let comment = $('#comments').val();
+          let date = new Date();
           if (postImage != '' & comment != '') {
             if (postData) {
               postData.posts.unshift({image:postImage, desc:comment, time: Date(), i:random});
@@ -83,13 +82,13 @@ window.timeline = function() {
               postData = {posts:[{image:postImage, desc:comment, time: Date(), i:random}]};
             }
           }
-          window.helper().setLocalStorageData(storageKey, postData);
+          helper.setLocalStorageData(storageKey, postData);
           showPost();
         });
       }
     });
   }
-
+  // code to display timeline
   function displayTimeLine() {
     const templateUrl = '../assets/templates/timeline.mustache';
     const dataUrl = '../assets/data/posts.json';
@@ -97,9 +96,9 @@ window.timeline = function() {
     $.get({url: dataUrl, type: type, success: function(timeLineData) {
       $.get({url: templateUrl, type: type, success: function(timeLineTemplate) {
 
-        var timeLineTemp = Mustache.render(timeLineTemplate, timeLineData);
-        window.helper().renderContent(timeLineTemp, 'timeline');
-        window.helper().updateName('user-name');
+        let timeLineTemp = Mustache.render(timeLineTemplate, timeLineData);
+        helper.renderContent(timeLineTemp, 'timeline');
+        helper.updateName('user-name');
         addPost();
         showPost();
         $('.display-year').text(timeLineData.posts.time);

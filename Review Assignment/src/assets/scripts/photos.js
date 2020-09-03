@@ -1,13 +1,12 @@
 window.photos = function() {
   var photo = {};
-  var type = 'GET';
 
   function showPost() {
-    var images = window.helper().getLocalStorageData('uploads');
+    let images = helper.getLocalStorageData('uploads');
     if (images) {
       let photoTemplateUrl = '../assets/templates/add-image.mustache';
       $.get({url: photoTemplateUrl, type: type, success: function(image) {
-        var output = Mustache.render(image, images);
+        let output = Mustache.render(image, images);
         $('.gallery').prepend(output);
         displayModalImage();
       }});
@@ -22,15 +21,15 @@ window.photos = function() {
   }
 
   function displayUploads() {
-    var element = 'photos';
-    var dataUrl = '../assets/data/posts.json';
-    var templateurl = '../assets/templates/photos.mustache';
+    let element = 'photos';
+    let dataUrl = '../assets/data/posts.json';
+    let templateurl = '../assets/templates/photos.mustache';
 
     $.get({url: dataUrl, type: type, success: function(photos) {
       $.get({url: templateurl, success: function(frmaes) {
-        var frame = Mustache.render(frmaes, photos);
-        window.helper().renderContent(frame, element);
-        window.helper().updateName('profile-name');
+        let frame = Mustache.render(frmaes, photos);
+        helper.renderContent(frame, element);
+        helper.updateName('profile-name');
         showPost();
         displayModalImage();
       }});

@@ -60,10 +60,6 @@
           border: none;
           margin-top: 15px;
           padding: 10px;
-
-           &:focus {
-             border: none;
-           }
         }
       }
     }
@@ -76,31 +72,25 @@
   .about-container {
     margin-top: 0;
 
-    .basic-info, .work {
+    .info-container {
+      padding: 5px;
 
-      .basic-info-content {
+      .info-title {
+        display: inline-block;
+        width: 37%;
+      }
 
-        .info-container {
-          padding: 5px;
+      .info-description {
+        display: inline-block;
+        width: 61%;
+      }
+    }
 
-          .info-title {
-            display: inline-block;
-            width: 37%;
-          }
+    .apply-button-container  {
+      margin-left: 55px;
 
-          .info-description {
-            display: inline-block;
-            width: 61%;
-          }
-        }
-
-        .apply-button-container  {
-          margin-left: 55px;
-
-          .apply-changes  {
-            display: inline-block;
-          }
-        }
+      .apply-changes  {
+        display: inline-block;
       }
     }
   }
@@ -110,23 +100,16 @@
   .about-container  {
     margin-top: 0;
 
-    .basic-info, .work {
-
-      .basic-info-content {
-        margin: 20px 0 0 0;
-
-        .info-container {
-
-          .info-title {
-            width: 20%;
-          }
-
-          .info-description {
-            text-align: center;
-            width: 70%;
-          }
-        }
-      }
+    .basic-info-content {
+      margin: 20px 0 0 0;
     }
+  }
+  .info-title {
+    width: 20%;
+  }
+
+  .info-description {
+    text-align: center;
+    width: 70%;
   }
 }

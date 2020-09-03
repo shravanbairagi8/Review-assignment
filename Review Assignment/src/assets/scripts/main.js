@@ -1,9 +1,9 @@
 $(document).ready(function () {
   var logInPage = window.logIn().initialize();
-  var helper = window.helper();
 
+  // prev and next button of browser
   window.addEventListener('popstate', function(e) {
-    if (e.state != null) {
+    if (e.state) {
        $('#main-content').empty();
       switch(e.state.historyKey) {
         case 'friends':
@@ -28,3 +28,5 @@ $(document).ready(function () {
   logInPage;
   helper.historyManager('loginPage');
 });
+var type = 'GET';
+var helper = window.helper();

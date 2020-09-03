@@ -2,41 +2,39 @@ window.logIn = function() {
   var displayLoginPage = {};
   var click = 'click';
   var mainContainer = $('#main-container');
-  var helper = window.helper();
 
   var loginData = {'email': 'demouser123@gmail.com', 'password': '123456'};
   helper.setLocalStorageData('userLogin', loginData);
 
   function clickEvents() {
-    //Code when user click on logout button
+    // Code when user click on logout button
     $('#logout').on(click, function() {
       mainContainer.empty();
       window.logIn().initialize();
     });
 
-    //click event on timeLine
+    // click event on timeLine
     $('#timeline').on(click, function() {
       window.timeline().initialize();
       helper.historyManager('timeLine');
     });
-    //about click event
+    // about click event
     $('#about').on(click, function() {
       window.about().initialize();
       helper.historyManager('aboutInfo');
     });
-    //friends button click
+    // friends button click
     $('#friends').on(click, function() {
-      var currentElement = $(this).attr('id');
       window.friends().initialize();
       helper.historyManager('friends');
     });
-    //display photos
+    // display photos
     $('#photos').on(click, function() {
       window.photos().initialize();
       helper.historyManager('photos');
     });
 
-    //click event on title
+    // click event on title
     $('.title').on(click, function() {
       window.timeline().initialize();
       helper.historyManager('timeLine');
@@ -45,7 +43,7 @@ window.logIn = function() {
 
   function displayLogIn() {
     const templateUrl = '../assets/templates/main-page.mustache';
-    $.get({url: templateUrl, type: 'GET', success: function(main) {
+    $.get({url: templateUrl, type: type, success: function(main) {
       mainContainer.html(main);
       clickEvents();
       window.sidebar().initialize();
@@ -60,9 +58,9 @@ window.logIn = function() {
       submitHandler: function(form) {
         $('#login').on(click, function(event) {
           event.preventDefault();
-          var credentials = helper.getLocalStorageData('userLogin');
-          var email = $('#email').val();
-          var pswd = $('#passwd').val();
+          let credentials = helper.getLocalStorageData('userLogin');
+          let email = $('#email').val();
+          let pswd = $('#passwd').val();
 
           if (email == credentials.email & pswd == credentials.password) {
             $('.invalid-data').addClass('hidden');
@@ -79,7 +77,7 @@ window.logIn = function() {
   function logInPage() {
     const templateUrl = '../assets/templates/login.mustache';
 
-    $.get({url: templateUrl, type: 'GET', success: function(logInTemplate) {
+    $.get({url: templateUrl, type: type, success: function(logInTemplate) {
       mainContainer.append(logInTemplate);
       formValidation();
     }});

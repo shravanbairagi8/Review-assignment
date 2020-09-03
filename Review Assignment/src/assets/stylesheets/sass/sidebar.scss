@@ -216,6 +216,10 @@
           width: 100%;
         }
 
+        &:hover .name-on-hover {
+          visibility: visible;
+        }
+
         .name-on-hover {
           visibility: hidden;
           background-color: $darkgrey-col;
@@ -227,60 +231,25 @@
           transition: opacity 0.3s;
           z-index: 1;
         }
-
-        &:hover .name-on-hover {
-          visibility: visible;
-        }
-
       }
     }
   }
 }
 
-//media query starts from here
-@media screen and (min-device-width: $mobile-min) and (max-device-width: $mobile-max) {
-
-}
-
 @media screen and (min-device-width: $tablet-min) and (max-device-width: $tablet-max) {
-  .sidebar-container  {
 
-    .suggestion-container {
-
-      .suggestion-body  {
-
-        .follow-suggestion  {
-
-          .follow-btn {
-            display: block;
-            float: none;
-            margin: 0 40px;
-          }
-
-        }
-      }
-    }
+  .follow-btn {
+    display: block;
+    float: none;
+    margin: 0 40px;
   }
 }
 
 @media only screen and (min-device-width: $pad-min) and
 (max-device-width: $pad-max)  {
-  .sidebar-container  {
-
-    .suggestion-container {
-
-      .suggestion-body  {
-
-        .follow-suggestion  {
-
-          .follow-btn {
-            display: block;
-            float: none;
-            margin: 0 40px;
-          }
-
-        }
-      }
-    }
+  .follow-btn {
+    display: block;
+    float: none;
+    margin: 0 40px;
   }
 }

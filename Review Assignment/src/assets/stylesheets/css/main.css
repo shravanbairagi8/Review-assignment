@@ -90,8 +90,6 @@ body {
           border: none;
           color: #ffffff;
           padding: 7px; }
-          body .main-container .login-form .form-container .submit-btn:focus {
-            border: none; }
 
 @media screen and (min-device-width: 320px) and (max-device-width: 480px) {
   body .main-container .header .title {

@@ -1,50 +1,40 @@
 window.sidebar = function() {
   var sideBar = {};
   var hidden = 'hidden';
-  var type = 'GET';
   var $followButton = $('.follow-btn');
   var counter = 0;
   var newFriend = {list: []};
 
-  function setStorage(value) {
-    localStorage.setItem('follow', JSON.stringify(value));
-  }
-
-  function getPeopleData()  {
-    let totalPersons = JSON.parse(localStorage.getItem('people'));
-    return totalPersons;
-  }
-
   function updateFollowings() {
     if (newFriend) {
-      var templateUrl = '../assets/templates/add-friend.mustache';
+      let templateUrl = '../assets/templates/add-friend.mustache';
       $.get({url: templateUrl, type: type, success: function(template) {
-        var addFriend = Mustache.render(template, newFriend)
+         addFriend = Mustache.render(template, newFriend)
         $('.friend-container').append(addFriend);
       }});
     }
   }
-
+  // side bar follow button clickEvent
   function followButtonClick() {
-    var delay = 700;
-    var maxElements = 0;
-    var followingCount = parseInt($('.following-count').text());
+    let delay = 700;
+    let maxElements = 0;
+    let followingCount = parseInt($('.following-count').text());
     $('.follow-btn').on('click', function() {
-      var totalElements = $('.display-false').length;
+      let totalElements = $('.display-false').length;
       followingCount += 1;
       $('.following-count').text(followingCount);
-      var users = window.helper().getLocalStorageData('people');
-      var update = users;
-      var followList = window.helper().getLocalStorageData('followings');
-      if (followList != null) {
+      let users = helper.getLocalStorageData('people');
+      let update = users;
+      let followList = helper.getLocalStorageData('followings');
+      if (followList) {
         update = followList;
       }
-      var followings = {people: []};
+      let followings = {people: []};
       counter += 1;
-      var clickedElement = $(this).attr('data-id');
+      let clickedElement = $(this).attr('data-id');
       let activeTile = $(this).parentsUntil('.suggestion-body');
       activeTile.fadeOut(delay);
-      for (var i in  update.people) {
+      for (let i in  update.people) {
         let currIndex = update.people[i];
         if (clickedElement == currIndex.sno) {
           followings.people.push({'name': currIndex.name, 'flag': "true", 'job': currIndex.job, 'sno': currIndex.sno, 'image': currIndex.image, 'follow': currIndex.follow});
@@ -52,7 +42,7 @@ window.sidebar = function() {
         } else {
           followings.people.push({'name': currIndex.name, 'flag': currIndex.flag, 'job': currIndex.job, 'sno': currIndex.sno, 'image': currIndex.image, 'follow': currIndex.follow});
         }
-        window.helper().setLocalStorageData('followings', followings);
+        helper.setLocalStorageData('followings', followings);
       }
       if (totalElements == counter) {
         $('.suggestion-container').addClass(hidden);
@@ -67,24 +57,24 @@ window.sidebar = function() {
     const templateUrl = '../assets/templates/sidebar-friends.mustache';
     $.get({url: dataUrl, type: type, success: function(data) {
       $.get({url: templateUrl, type: type, success: function(template) {
-        var showFriends = Mustache.render(template, data)
+        let showFriends = Mustache.render(template, data)
         $('.friends-body').html(showFriends);
         $('#tile-5').nextAll().addClass( "hidden");
       }});
     }});
   }
 
-  //See more buttton functionality
+  // See more buttton functionality
   function displaySeeMore() {
     defaultDataForSidebarFriends();
-    var seeMoreBtn = $('.see-more-btn');
+    let seeMoreBtn = $('.see-more-btn');
     seeMoreBtn.on('click', function(event) {
       if (seeMoreBtn.text() == 'See all') {
         const dataUrl = '../assets/data/friends.json';
         const templateUrl = '../assets/templates/sidebar-friends.mustache';
         $.get({url: dataUrl, type: type, success: function(data) {
           $.get({url: templateUrl, type: type, success: function(template) {
-            var showFriends = Mustache.render(template, data)
+            let showFriends = Mustache.render(template, data)
             $('.friends-body').html(showFriends);
           }});
         }});
@@ -97,19 +87,19 @@ window.sidebar = function() {
   }
 
   function suggetionsDisplay() {
-    var show = localStorage.getItem('suggetionsDisplay');
+    let show = localStorage.getItem('suggetionsDisplay');
     if (show == 'false') {
       $('.suggestion-container').addClass(hidden);
     }
   }
-
+  // to display side bar on page
   function displaySidebar() {
     const dataUrl = '../assets/data/friends.json';
     const templateUrl = '../assets/templates/sidebar.mustache';
 
     $.get({url: dataUrl, type: type, success: function(suggetions) {
       $.get({url: templateUrl, success: function(sidebar) {
-        var sideBar = Mustache.render(sidebar, suggetions)
+        let sideBar = Mustache.render(sidebar, suggetions)
         $('#side-bar').html(sideBar);
         displaySeeMore();
         followButtonClick();

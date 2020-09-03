@@ -5,16 +5,16 @@ window.friends = function() {
 
   //Unfollow button functionality
   function toggleFollowBtn() {
-    var unFollow = {data: []};
+    let unFollow = {data: []};
     $('.follow-unfollow-btn').on('click', function() {
-      var followBtn = $('.follow-unfollow-btn');
-      var followingCount = parseInt(followingNumber.text());
-      var unFollowingList = getDataFromLocalStorage('unfollow');
+      let followBtn = $('.follow-unfollow-btn');
+      let followingCount = parseInt(followingNumber.text());
+      let unFollowingList = getDataFromLocalStorage('unfollow');
       if (unFollowingList) {
         unFollow = unFollowingList;
       }
-      var currElementText = $(this).text();
-      var clickedElement = $(this).attr('data-id');
+      let currElementText = $(this).text();
+      let clickedElement = $(this).attr('data-id');
 
       if (currElementText == 'Follow') {
         $(this).text('Unfollow');
@@ -27,22 +27,22 @@ window.friends = function() {
         followingCount -= 1;
         followingNumber.text(followingCount);
       }
-      window.helper().setLocalStorageData('unfollow', unFollow);
+      helper.setLocalStorageData('unfollow', unFollow);
     });
   }
 
   function renderPage(template, data) {
     if (data) {
-      var friendsPagedata = Mustache.render(template, data);
-      window.helper().renderContent(friendsPagedata, 'friends');
-      window.helper().updateName('user-name');
+      let friendsPagedata = Mustache.render(template, data);
+      helper.renderContent(friendsPagedata, 'friends');
+      helper.updateName('user-name');
     }
   }
 
   function setDataToLocalStorage() {
     let dataUrl = '../assets/data/friends.json';
     $.get({url: dataUrl, type: 'GET', success: function(data) {
-      window.helper().setLocalStorageData('people', data);
+      helper.setLocalStorageData('people', data);
     }});
   }
 
@@ -54,9 +54,9 @@ window.friends = function() {
   }
 
   function updateFollowings() {
-    var unFollowingList = window.helper().getLocalStorageData('unfollow');
+    let unFollowingList = helper.getLocalStorageData('unfollow');
     if (unFollowingList) {
-      for (var i in unFollowingList.data) {
+      for (let i in unFollowingList.data) {
         $('.' + unFollowingList.data[i]).text('Follow');
       }
     }
@@ -65,16 +65,13 @@ window.friends = function() {
   function displayFriends() {
     setDataToLocalStorage();
     const templateUrl = '../assets/templates/friends.mustache';
-    var peopleData = window.helper().getLocalStorageData('people');
-    var followList = window.helper().getLocalStorageData('followings');
+    let peopleData = helper.getLocalStorageData('people');
+    let followList = helper.getLocalStorageData('followings');
 
     $.get({url: templateUrl, type: 'GET', success: function(friendsTemplate) {
-      if (followList) {
-        renderPage(friendsTemplate, followList);
-      } else {
-        var peopleData = window.helper().getLocalStorageData('people');
-        renderPage(friendsTemplate, peopleData);
-      }
+      let friendsList = followList ?  followList :  peopleData;
+      renderPage(friendsTemplate, friendsList);
+
       toggleFollowBtn();
       $('.false').addClass('hidden');
       updateFollowings();

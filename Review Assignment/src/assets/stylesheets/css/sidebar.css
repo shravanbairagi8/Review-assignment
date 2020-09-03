@@ -141,6 +141,8 @@
           cursor: pointer;
           margin: 12px;
           width: 100%; }
+        .sidebar-container .sidebar-friends-container .friends-body .friend-photo-tile:hover .name-on-hover {
+          visibility: visible; }
         .sidebar-container .sidebar-friends-container .friends-body .friend-photo-tile .name-on-hover {
           visibility: hidden;
           background-color: #a9a9a9;
@@ -151,16 +153,14 @@
           position: absolute;
           transition: opacity 0.3s;
           z-index: 1; }
-        .sidebar-container .sidebar-friends-container .friends-body .friend-photo-tile:hover .name-on-hover {
-          visibility: visible; }
 
 @media screen and (min-device-width: 768px) and (max-device-width: 1023px) {
-  .sidebar-container .suggestion-container .suggestion-body .follow-suggestion .follow-btn {
+  .follow-btn {
     display: block;
     float: none;
     margin: 0 40px; } }
 @media only screen and (min-device-width: 1024px) and (max-device-width: 1279px) {
-  .sidebar-container .suggestion-container .suggestion-body .follow-suggestion .follow-btn {
+  .follow-btn {
     display: block;
     float: none;
     margin: 0 40px; } }
