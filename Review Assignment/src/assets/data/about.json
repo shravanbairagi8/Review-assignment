@@ -1,0 +1,10 @@
+{
+  "name":"John Doe",
+  "gender":"Male",
+  "birthDate":"October 25th,1990",
+  "status":"Single",
+  "location":"New York,USA",
+  "occupation":"Developer",
+  "skills":"C#,Javascript,Anguler",
+  "job":"Phoneixcoded"
+}
